@@ -95,7 +95,11 @@ public class FunctionDeclarationTree extends ParseTree {
       this.name = name;
       return this;
     }
-
+    
+    public String getName() {
+      return name != null ? name.toString() : "";
+    }
+    
     /**
      * Optional generics information.
      *

@@ -2183,7 +2183,13 @@ public class Parser {
 
   // 11.1 Primary Expressions
   private ParseTree parsePrimaryExpression() {
-    switch (peekType()) {
+    TokenType type = peekType();
+
+    if (!inStrictContext() && Keywords.isStrictKeyword(type)) {
+      return parseIdentifierExpression();
+    }
+
+    switch (type) {
     case CLASS:
       return parseClassExpression();
     case SUPER:
@@ -2775,7 +2781,12 @@ public class Parser {
   }
 
   private boolean peekExpression() {
-    switch (peekType()) {
+    TokenType type = peekType();
+    if (!inStrictContext() && Keywords.isStrictKeyword(type)) {
+      return true;
+    }
+
+    switch (type) {
       case BANG:
       case CLASS:
       case DELETE:

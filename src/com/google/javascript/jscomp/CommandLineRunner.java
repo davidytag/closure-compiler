@@ -1813,6 +1813,7 @@ public class CommandLineRunner extends
     options.setPrintSourceAfterEachPass(flags.printSourceAfterEachPass);
     options.setTracerMode(flags.tracerMode);
     options.setStrictModeInput(flags.strictModeInput);
+    options.setStrictModeInput(false);
     if (!flags.emitUseStrict) {
       options.setEmitUseStrict(false);
     }
